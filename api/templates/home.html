@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    안녕하세요 {{user.location}}에 사는 {{user.university}} 다니는 {{user.nickname}}님 안녕하세요
+    {% endif%}
+    <h1>Blog Project</h1>
+    <div class="container">
+        {% for blog in blogs %}
+        <div>
+            <h3>{{blog.title}}</h3> 
+            {{blog.writer}}
+            <br>
+            {{blog.summary}}
+            <button class="btn btn-primary" type="submit"><a href="{%url 'detail' blog.id %}" style="color:white; text-decoration:none">...더보기</a></button>
+            <br>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
